@@ -1,0 +1,42 @@
+{
+    "version": "v6_2.0",
+    "paradigm": "Site-Specific Hospital Domain Adaptation",
+    "calibration_samples": 406,
+    "zero_shot_auc": 0.802124542124542,
+    "adapted_auc": 0.8171916971916972,
+    "adapted_densenet_auc": 0.8133821733821733,
+    "adapted_convnext_auc": 0.8169230769230769,
+    "paired_delta_auc": 0.015384760468491463,
+    "ci_95": [
+        0.0012279006273294981,
+        0.029842090758069196
+    ],
+    "p_value": 0.018,
+    "adapted_youden_threshold": 0.4873046875,
+    "sensitivity_zeroshot": 0.5384615384615384,
+    "specificity_zeroshot": 0.8755555555555555,
+    "sensitivity_adapted": 0.7362637362637363,
+    "specificity_adapted": 0.7733333333333333,
+    "sample_efficiency_curve": [
+        {
+            "fraction": 0.1,
+            "scans": 40,
+            "auc": 0.8097435897435896
+        },
+        {
+            "fraction": 0.25,
+            "scans": 101,
+            "auc": 0.8113675213675214
+        },
+        {
+            "fraction": 0.5,
+            "scans": 203,
+            "auc": 0.8150427350427351
+        },
+        {
+            "fraction": 1.0,
+            "scans": 406,
+            "auc": 0.8175335775335776
+        }
+    ]
+}

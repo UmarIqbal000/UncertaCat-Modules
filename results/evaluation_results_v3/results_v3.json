@@ -1,0 +1,152 @@
+{
+    "system_parameters": {
+        "optimal_temperature_val": -3185.520751953125,
+        "optimal_temperature_adapt": 1.3086378574371338,
+        "youden_threshold": 0.5763316582914573,
+        "sens90_threshold": 0.44829145728643216,
+        "apply_calibration_in_production": false,
+        "severity_status": "EXPERIMENTAL"
+    },
+    "v2_vs_v3_comparison": [
+        {
+            "Metric": "Internal Test AUC",
+            "v2 Measured": "0.977",
+            "v3 Measured": "0.933",
+            "Difference": "-0.044",
+            "Empirical Verdict": "WORSE"
+        },
+        {
+            "Metric": "External Zero-Shot AUC",
+            "v2 Measured": "0.775",
+            "v3 Measured": "0.752",
+            "Difference": "-0.023",
+            "Empirical Verdict": "WORSE"
+        },
+        {
+            "Metric": "External Sensitivity (@Val Thresh)",
+            "v2 Measured": "40.600",
+            "v3 Measured": "44.505",
+            "Difference": "+3.905",
+            "Empirical Verdict": "IMPROVED"
+        },
+        {
+            "Metric": "Shortcut Classifier AUC",
+            "v2 Measured": "0.754",
+            "v3 Measured": "0.675",
+            "Difference": "-0.079",
+            "Empirical Verdict": "IMPROVED"
+        },
+        {
+            "Metric": "External Zero-Shot ECE",
+            "v2 Measured": "0.291",
+            "v3 Measured": "0.053",
+            "Difference": "-0.238",
+            "Empirical Verdict": "IMPROVED"
+        },
+        {
+            "Metric": "Uncertainty Error AUROC",
+            "v2 Measured": "0.558",
+            "v3 Measured": "0.638",
+            "Difference": "+0.080",
+            "Empirical Verdict": "IMPROVED"
+        }
+    ],
+    "internal_test_metrics": {
+        "AUC_point": 0.9331658291457287,
+        "AUC_CI": [
+            0.9115471424881936,
+            0.957692183702822
+        ],
+        "Sens_point": 83.41708542713567,
+        "Sens_CI": [
+            79.36371100164203,
+            88.03571428571428
+        ],
+        "Spec_point": 94.5945945945946,
+        "Spec_CI": [
+            92.91666666666667,
+            96.41335326357748
+        ]
+    },
+    "external_zero_shot_metrics": {
+        "AUC_point": 0.7524542124542125,
+        "AUC_CI": [
+            0.7165756517382249,
+            0.7899446188916791
+        ],
+        "Sens_point": 44.505494505494504,
+        "Sens_CI": [
+            38.983050847457626,
+            50.0
+        ],
+        "Spec_point": 90.66666666666666,
+        "Spec_CI": [
+            87.85714285714286,
+            93.83561643835617
+        ]
+    },
+    "external_adapted_metrics": {
+        "AUC_point": 0.7753357753357755,
+        "AUC_CI": [
+            0.7399912045596762,
+            0.8086344760312151
+        ],
+        "Sens_point": 95.05494505494505,
+        "Sens_CI": [
+            92.7256046705588,
+            97.41379310344827
+        ],
+        "Spec_point": 26.222222222222225,
+        "Spec_CI": [
+            21.581627006087437,
+            30.614795918367342
+        ]
+    },
+    "paired_adaptation_test": {
+        "delta_auc_mean": 0.022782238756507894,
+        "ci_95": [
+            0.007826242064461563,
+            0.037566989110071114
+        ],
+        "p_value": 0.002
+    },
+    "calibration_summary": [
+        {
+            "Cohort": "Internal Test",
+            "Temperature": -3185.520751953125,
+            "ECE Raw": 0.08134786534550323,
+            "ECE Calibrated": 0.150284095587148,
+            "Brier Raw": 0.07897739410246148,
+            "Brier Calibrated": 0.2501464226111907,
+            "NLL Raw": 0.2820494386667191,
+            "NLL Calibrated": 0.6934400258043789
+        },
+        {
+            "Cohort": "External Holdout (Zero-Shot)",
+            "Temperature": -3185.520751953125,
+            "ECE Raw": 0.18703235383545955,
+            "ECE Calibrated": 0.05292066957908065,
+            "Brier Raw": 0.22983613907872702,
+            "Brier Calibrated": 0.2500691422082893,
+            "NLL Raw": 0.7102808810532674,
+            "NLL Calibrated": 0.6932854649851942
+        },
+        {
+            "Cohort": "External Holdout (Adapted)",
+            "Temperature": 1.3086378574371338,
+            "ECE Raw": 0.05117054827309943,
+            "ECE Calibrated": 0.05536518094248157,
+            "Brier Raw": 0.19193570798933765,
+            "Brier Calibrated": 0.19181023887570262,
+            "NLL Raw": 0.5943804382851544,
+            "NLL Calibrated": 0.5797851622688892
+        }
+    ],
+    "explainability": {
+        "avg_center_mass": "0.1892618",
+        "avg_outer_mass": "0.5862366",
+        "auc_clean": 0.9331658291457287,
+        "auc_occ_center": 0.9331726198560368,
+        "auc_occ_outer": 0.9101860654624474
+    }
+}

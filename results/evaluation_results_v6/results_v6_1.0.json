@@ -1,0 +1,79 @@
+{
+    "version": "v6_1.0",
+    "paradigm": "In-Domain Training & Zero-Shot External Evaluation",
+    "resolution": 288,
+    "architectures": [
+        "DenseNet-121",
+        "ConvNeXt-Tiny"
+    ],
+    "seeds": [
+        42,
+        7,
+        2024
+    ],
+    "validation_youden_threshold": 0.50244140625,
+    "internal_overall_auc": 0.9435963601792747,
+    "internal_odir_auc": 0.8772637238256932,
+    "internal_eyediseases_auc": 0.9850169491525423,
+    "external_zeroshot_auc": 0.802124542124542,
+    "external_zeroshot_sensitivity": 0.5384615384615384,
+    "external_zeroshot_specificity": 0.8755555555555555,
+    "densenet_seeds": [
+        {
+            "Seed": 42,
+            "Stopped Epoch": 8,
+            "Val Macro-AUC": 0.9637266786584093,
+            "Internal Overall AUC": 0.9335528996333016,
+            "ODIR Test AUC": 0.8716751556310129,
+            "EyeDiseases Test AUC": 0.9761016949152543,
+            "External Zero-Shot AUC": 0.8112576312576313
+        },
+        {
+            "Seed": 7,
+            "Stopped Epoch": 11,
+            "Val Macro-AUC": 0.9648636558135917,
+            "Internal Overall AUC": 0.9387070487573,
+            "ODIR Test AUC": 0.875070741369553,
+            "EyeDiseases Test AUC": 0.9824745762711865,
+            "External Zero-Shot AUC": 0.7995970695970696
+        },
+        {
+            "Seed": 2024,
+            "Stopped Epoch": 14,
+            "Val Macro-AUC": 0.9674802042785472,
+            "Internal Overall AUC": 0.9395558875458374,
+            "ODIR Test AUC": 0.8731960950764007,
+            "EyeDiseases Test AUC": 0.9804745762711864,
+            "External Zero-Shot AUC": 0.7960683760683761
+        }
+    ],
+    "convnext_seeds": [
+        {
+            "Seed": 42,
+            "Stopped Epoch": 6,
+            "Val Macro-AUC": 0.9640295373899062,
+            "Internal Overall AUC": 0.9420820317805243,
+            "ODIR Test AUC": 0.8707555178268251,
+            "EyeDiseases Test AUC": 0.9848474576271186,
+            "External Zero-Shot AUC": 0.7916727716727717
+        },
+        {
+            "Seed": 7,
+            "Stopped Epoch": 7,
+            "Val Macro-AUC": 0.964378771926327,
+            "Internal Overall AUC": 0.9462379464892028,
+            "ODIR Test AUC": 0.8671830786644029,
+            "EyeDiseases Test AUC": 0.9911525423728814,
+            "External Zero-Shot AUC": 0.7787667887667887
+        },
+        {
+            "Seed": 2024,
+            "Stopped Epoch": 6,
+            "Val Macro-AUC": 0.9655989165850294,
+            "Internal Overall AUC": 0.9445810131739779,
+            "ODIR Test AUC": 0.8720288624787778,
+            "EyeDiseases Test AUC": 0.9877288135593221,
+            "External Zero-Shot AUC": 0.7764835164835164
+        }
+    ]
+}
