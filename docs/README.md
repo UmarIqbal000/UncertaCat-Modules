@@ -3,7 +3,8 @@
 This directory contains formal documentation, empirical technical reports, and defense preparation resources for the UncertaCat project:
 
 ### 📄 Primary Technical Report & Defense Guide
-* **[UncertaCat_Complete_Project_Report.pdf](./UncertaCat_Complete_Project_Report.pdf)** (22-Page Comprehensive Academic Report)
+* **[UncertaCat_Complete_Project_Report.pdf](./UncertaCat_Complete_Project_Report.pdf)** (22-Page Print-Ready Academic PDF Report)
+* **[UncertaCat_Complete_Project_Report.docx](./UncertaCat_Complete_Project_Report.docx)** (Full Editable Microsoft Word Document Report generated via docx-skill)
   * Complete lifecycle from clinical problem formulation to production deployment.
   * In-depth dataset breakdown across all 5 merged repositories (5,179 scans).
   * Optical preprocessing walkthrough (circular FOV masking, 288x288 scaling, Graham normalization, CLAHE).
