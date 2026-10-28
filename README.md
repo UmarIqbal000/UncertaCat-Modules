@@ -43,18 +43,34 @@ While deep convolutional neural networks achieve outstanding accuracy when train
 
 ---
 
-## 2. Datasets & Experimental Cohorts
+## 2. Datasets & Ingestion Pipeline
 
-| Dataset Cohort | Primary Role | Source / Modality | Sample Size ($n$) | Clinical Annotation |
-| :--- | :--- | :--- | :---: | :--- |
-| **OIA-ODIR** (Source Hospital) | Model Training & In-Domain Validation | Multi-center retinal fundus photography (Zeiss, Canon, Topcon) | 3,400 scans | Expert double-annotated binary cataract label & continuous lens opacification grade |
-| **RFMiD** (Target Hospital) | Unsupervised Adaptation & External Holdout | Retinal Fundus Multi-Disease Open Benchmark (Topcon TRC-NW8) | 350 holdout scans (CC BY 4.0) | Independent ophthalmology validation labels for external zero-shot vs. adapted comparison |
+All raw scans, standardized preprocessed images, and consolidated metadata (`metadata.csv`) are centrally archived on Google Drive:
+> 📦 **Official Project Google Drive Repository:**  
+> 👉 **[Major Project Complete Google Drive Folder](https://drive.google.com/drive/u/0/folders/1F9ZVb2mQkmq25Tbgqj_xSv2Wzz-bZf6C)**  
+> *(Contains `preprocessed images/` with `train/`, `val/`, `test/`, and `external_test/` partitions, as well as the master `metadata.csv` covering all 5,179 curated scans).*
 
-### Partitioning Scheme:
-* **Source Training Split:** 2,400 scans
-* **Source Validation Split:** 600 scans
-* **Source In-Domain Test Split:** 400 scans
-* **External Target Hospital Holdout Split:** 350 scans
+---
+
+### Ingested & Merged Repositories (Verified from `Major_Project_image_preprocessing.ipynb`):
+
+To assemble a robust, multi-center cohort, five independent ophthalmology datasets were downloaded, harmonized, and perceptually deduplicated using difference hashing (`dHash`):
+
+| # | Dataset Name | Source Repository | Total Curated Scans | Cataract Scans | Normal Scans | Assigned Partition | Role in Research Pipeline |
+| :-: | :--- | :--- | :---: | :---: | :---: | :--- | :--- |
+| **1** | **ODIR-5K** | Kaggle: `andrewmvd/ocular-disease-recognition-odir5k` | **2,163** | 391 | 1,772 | Train (1,492)<br>Val (331)<br>Test (340) | **Primary Source Hospital Training Cohort:** Multi-center real-world clinical benchmark with double-annotated diagnostic keywords. |
+| **2** | **EyeDiseases** | Kaggle: `gunavenkatdoddi/eye-diseases-classification` | **1,779** | 837 | 942 | Train (1,261)<br>Val (255)<br>Test (263) | **In-Domain Scaling & Class Balancing:** High-resolution color fundus scans for expanding feature variance across cataractous opacification stages. |
+| **3** | **RFMiD** | Kaggle: `andrewmvd/retinal-disease-classification` | **869** | 398 | 471 | **External Test / Holdout (869)** | **100% Held-Out External Hospital Benchmark:** Multi-center challenge dataset (Topcon TRC-NW8 cameras). Used exclusively for zero-shot vs. domain adaptation evaluation. |
+| **4** | **CataractDataset** | Kaggle: `jr2ngb/cataractdataset` | **223** | 0 | 223 | Train (140)<br>Val (45)<br>Test (38) | **Normal Optic Baseline Balancing:** High-quality verified clear fundus scans for maintaining high specificity. |
+| **5** | **CSDI** | Hugging Face: `RainyNight/CSDI` | **145** | 143 | 2 | Train (109)<br>Val (17)<br>Test (19) | **Multi-Task Continuous Severity Ground Truth:** Expert-annotated continuous cataract opacification severity grades ($0.0\% - 100.0\%$). |
+| **TOTAL** | **Consolidated Cohort** | *5 Unified Clinical Repositories* | **5,179** | **1,769** | **3,410** | **Train: 3,002**<br>**Val: 648**<br>**Test: 660**<br>**Ext Holdout: 869** | **Full End-to-End Curated Dataset** |
+
+---
+
+### Cross-Source Deduplication & Harmonization Details:
+1. **Label Harmonization:** Every record was strictly mapped to binary classes: `1` (Cataractous media opacity) vs. `0` (Normal clear optic media). Unrelated pathologies (e.g. pure diabetic retinopathy or pure glaucoma without cataract) were excluded to maintain clean diagnostic boundaries.
+2. **Perceptual dHash Deduplication:** Because public Kaggle datasets often mirror images, a 64-bit difference hash (`imagehash.dhash`) was calculated for all 5,179 scans. Scans with Hamming distance $< 2$ were flagged and deduplicated to guarantee zero data leakage between partitions.
+3. **Patient-Aware Splitting:** Patient identifiers were preserved so that left and right eyes of the same individual were strictly kept within the same partition, preventing intra-patient contamination.
 
 ---
 
